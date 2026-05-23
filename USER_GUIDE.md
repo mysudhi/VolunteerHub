@@ -78,8 +78,6 @@ The desktop view takes advantage of larger screens to show more information at o
 
 ### Login Page
 
-![Login Section](docs/images/login_section.webp)
-
 **Purpose:** This is the authentication screen where you sign into your VolunteerHub account.
 
 **What's on this screen:**
@@ -104,8 +102,6 @@ The desktop view takes advantage of larger screens to show more information at o
 ---
 
 ### Dashboard Page
-
-![Upcoming Shifts Section](docs/images/upcoming_shifts.webp)
 
 **Purpose:** The Dashboard is your home screen after logging in. It shows your upcoming volunteer shifts at a glance so you always know what's next.
 
@@ -144,8 +140,6 @@ The desktop view takes advantage of larger screens to show more information at o
 ## Navigation
 
 ### Desktop Navigation
-
-![Desktop Header](docs/images/desktop_header.webp)
 
 **Purpose:** The desktop header provides branding and organization context. It appears at the top of every page when using a computer or tablet in landscape mode.
 
@@ -405,9 +399,7 @@ A: Note the error message and contact your organization admin. If you're a devel
 |--------|-------------|
 | ![Desktop Full View](docs/images/desktop_full_view.webp) | Complete desktop application showing header, login, and shifts |
 | ![Mobile View](docs/images/mobile_view.webp) | Mobile layout with bottom tab navigation |
-| ![Login Section](docs/images/login_section.webp) | Authentication area with Google sign-in |
-| ![Upcoming Shifts](docs/images/upcoming_shifts.webp) | Dashboard shift cards showing schedule |
-| ![Desktop Header](docs/images/desktop_header.webp) | Top navigation bar with org badge |
+
 
 ---
 
