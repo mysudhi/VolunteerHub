@@ -1,0 +1,13 @@
+{
+  "name": "@volunteerhub/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "echo \"Server lint not configured yet\"",
+    "prisma:generate": "prisma generate --schema ../prisma/schema.prisma"
+  }
+}
