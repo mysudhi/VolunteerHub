@@ -24,3 +24,6 @@ npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 docs/images
+*.tar.gz
+*.tar
+volunteerhub-v*.tar.gz
