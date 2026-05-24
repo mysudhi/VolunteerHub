@@ -62,7 +62,7 @@ authRouter.post("/register", async (req, res) => {
     });
   } catch (err) {
     if (err instanceof z.ZodError) {
-      res.status(400).json({ error: "Validation failed", details: err.errors });
+      res.status(400).json({ error: "Validation failed", details: err.issues });
       return;
     }
     console.error("Registration error:", err);
@@ -112,7 +112,7 @@ authRouter.post("/login", async (req, res) => {
     });
   } catch (err) {
     if (err instanceof z.ZodError) {
-      res.status(400).json({ error: "Validation failed", details: err.errors });
+      res.status(400).json({ error: "Validation failed", details: err.issues });
       return;
     }
     console.error("Login error:", err);
