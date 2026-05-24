@@ -9,7 +9,8 @@ const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().default("7d"),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
-  GOOGLE_CALLBACK_URL: z.string().url().optional()
+  GOOGLE_CALLBACK_URL: z.string().url().optional(),
+  FRONTEND_URL: z.string().url().default("http://localhost:5173")
 });
 
 export const env = envSchema.parse(process.env);

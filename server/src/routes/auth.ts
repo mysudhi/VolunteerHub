@@ -125,19 +125,26 @@ authRouter.get("/google", (_req, res) => {
   const redirectUri = process.env.GOOGLE_CALLBACK_URL;
 
   if (!clientId || !redirectUri) {
-    res.status(503).json({ error: "Google OAuth is not configured" });
+    res.status(503).json({ error: "Google OAuth is not configured", configured: false });
     return;
   }
 
   const url = buildGoogleOAuthUrl(clientId, redirectUri);
-  res.json({ url });
+  res.json({ url, configured: true });
+});
+
+authRouter.get("/google/status", (_req, res) => {
+  const configured = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CALLBACK_URL);
+  res.json({ configured });
 });
 
 authRouter.get("/google/callback", async (req, res) => {
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+
   try {
     const code = req.query.code as string | undefined;
     if (!code) {
-      res.status(400).json({ error: "Missing authorization code" });
+      res.redirect(`${frontendUrl}?auth_error=${encodeURIComponent("Missing authorization code")}`);
       return;
     }
 
@@ -146,7 +153,7 @@ authRouter.get("/google/callback", async (req, res) => {
     const redirectUri = process.env.GOOGLE_CALLBACK_URL;
 
     if (!clientId || !clientSecret || !redirectUri) {
-      res.status(503).json({ error: "Google OAuth is not configured" });
+      res.redirect(`${frontendUrl}?auth_error=${encodeURIComponent("Google OAuth is not configured")}`);
       return;
     }
 
@@ -185,19 +192,10 @@ authRouter.get("/google/callback", async (req, res) => {
       role: user.role
     });
 
-    res.json({
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        role: user.role
-      }
-    });
+    res.redirect(`${frontendUrl}?token=${token}`);
   } catch (err) {
     console.error("Google OAuth error:", err);
-    res.status(500).json({ error: "Google authentication failed" });
+    res.redirect(`${frontendUrl}?auth_error=${encodeURIComponent("Google authentication failed")}`);
   }
 });
 
