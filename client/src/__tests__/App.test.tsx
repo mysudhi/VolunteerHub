@@ -13,19 +13,14 @@ describe("App", () => {
     expect(screen.getByText("VolunteerHub")).toBeInTheDocument();
   });
 
-  it("renders the LoginPage component", () => {
+  it("renders the LoginPage when not authenticated", () => {
     render(<App />);
     expect(screen.getByText("Welcome back")).toBeInTheDocument();
   });
 
-  it("renders the DashboardPage component", () => {
+  it("shows the sign-in form by default", () => {
     render(<App />);
-    expect(screen.getByText("Upcoming Shifts")).toBeInTheDocument();
-  });
-
-  it("renders the MobileTabBar component", () => {
-    render(<App />);
-    expect(screen.getByText("Schedule")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /sign in/i })).toBeInTheDocument();
   });
 
   it("has the correct layout structure", () => {
@@ -33,5 +28,10 @@ describe("App", () => {
     const main = container.querySelector("main");
     expect(main).toBeInTheDocument();
     expect(main).toHaveClass("mx-auto", "max-w-6xl");
+  });
+
+  it("does not show MobileTabBar when not authenticated", () => {
+    render(<App />);
+    expect(screen.queryByLabelText("Primary navigation")).not.toBeInTheDocument();
   });
 });
