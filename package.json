@@ -12,12 +12,15 @@
     "build": "npm run build -ws --if-present",
     "dev": "npm run dev -ws --if-present",
     "lint": "npm run lint -ws --if-present",
-    "test": "npm run test -ws --if-present"
+    "test": "npm run test -ws --if-present",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test && npm run test:e2e"
   },
   "engines": {
     "node": ">=20.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "prisma": "^6.19.3"
   }
 }
