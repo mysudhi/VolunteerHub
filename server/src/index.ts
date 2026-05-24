@@ -9,5 +9,5 @@ app.get("/health", (_req, res) => {
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`VolunteerHub API listening on port ${port}`);
+  console.log(`ContributorHub API listening on port ${port}`);
 });

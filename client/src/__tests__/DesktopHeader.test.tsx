@@ -14,7 +14,7 @@ const mockUser = {
 describe("DesktopHeader", () => {
   it("renders the application name", () => {
     render(<DesktopHeader user={null} onLogout={vi.fn()} />);
-    expect(screen.getByText("VolunteerHub")).toBeInTheDocument();
+    expect(screen.getByText("ContributorHub")).toBeInTheDocument();
   });
 
   it("shows Org Dashboard badge when not logged in", () => {
@@ -48,7 +48,7 @@ describe("DesktopHeader", () => {
 
   it("renders app name as an h1 element", () => {
     render(<DesktopHeader user={null} onLogout={vi.fn()} />);
-    const heading = screen.getByText("VolunteerHub");
+    const heading = screen.getByText("ContributorHub");
     expect(heading.tagName).toBe("H1");
   });
 });

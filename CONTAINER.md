@@ -1,6 +1,6 @@
 # Container Guide
 
-This guide explains how to build, run, and manage VolunteerHub using Docker containers. Containerization packages the entire application and its dependencies into portable images that run consistently on any machine.
+This guide explains how to build, run, and manage ContributorHub using Docker containers. Containerization packages the entire application and its dependencies into portable images that run consistently on any machine.
 
 ---
 
@@ -25,12 +25,12 @@ This guide explains how to build, run, and manage VolunteerHub using Docker cont
 
 ## Overview
 
-VolunteerHub is containerized using a multi-stage Dockerfile that produces two optimized images:
+ContributorHub is containerized using a multi-stage Dockerfile that produces two optimized images:
 
 | Image | Base | Size | Purpose |
 |-------|------|------|---------|
-| `volunteerhub-server` | `node:20-alpine` | ~180 MB | Express API + Prisma ORM |
-| `volunteerhub-client` | `nginx:alpine` | ~25 MB | Static React frontend + reverse proxy |
+| `contributorhub-server` | `node:20-alpine` | ~180 MB | Express API + Prisma ORM |
+| `contributorhub-client` | `nginx:alpine` | ~25 MB | Static React frontend + reverse proxy |
 
 Docker Compose orchestrates these with a PostgreSQL 16 database, giving you a complete production-ready stack with a single command.
 
@@ -87,12 +87,12 @@ If you get a "Cannot connect to the Docker daemon" error, start Docker:
 
 ## Quick Start (Recommended)
 
-The fastest way to run VolunteerHub in containers:
+The fastest way to run ContributorHub in containers:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/mysudhi/VolunteerHub.git
-cd VolunteerHub
+git clone https://github.com/mysudhi/ContributorHub.git
+cd ContributorHub
 
 # 2. Build and start all services
 docker compose up -d
@@ -105,7 +105,7 @@ docker compose ps
 
 | Service | URL | Description |
 |---------|-----|-------------|
-| Frontend | http://localhost:3000 | VolunteerHub web application |
+| Frontend | http://localhost:3000 | ContributorHub web application |
 | API (direct) | http://localhost:4000/health | Express API health check |
 | API (via proxy) | http://localhost:3000/health | API through nginx reverse proxy |
 
@@ -134,7 +134,7 @@ That's it! The rest of this guide covers details, customization, and troubleshoo
 │                              ▼                             │
 │  ┌──────────────────┐  ┌──────────────────┐               │
 │  │  server (Node.js) │  │    db (Postgres)  │               │
-│  │  Express API      │──│  volunteerhub DB  │               │
+│  │  Express API      │──│  contributorhub DB  │               │
 │  │  Port 4000        │  │  Port 5432        │               │
 │  └──────────────────┘  └──────────────────┘               │
 │       ↑ Port 4000 (public)    ↑ Port 5432 (public)         │
@@ -176,13 +176,13 @@ docker compose build --no-cache
 ### Build the server image standalone
 
 ```bash
-docker build --target server -t volunteerhub-server .
+docker build --target server -t contributorhub-server .
 ```
 
 ### Build the client image standalone
 
 ```bash
-docker build --target client -t volunteerhub-client .
+docker build --target client -t contributorhub-client .
 ```
 
 ---
@@ -240,52 +240,52 @@ If you prefer to run containers manually or use an external PostgreSQL database:
 ### 1. Create a Docker network
 
 ```bash
-docker network create volunteerhub-net
+docker network create contributorhub-net
 ```
 
 ### 2. Start PostgreSQL
 
 ```bash
 docker run -d \
-  --name volunteerhub-db \
-  --network volunteerhub-net \
-  -e POSTGRES_USER=volunteerhub \
-  -e POSTGRES_PASSWORD=volunteerhub \
-  -e POSTGRES_DB=volunteerhub \
+  --name contributorhub-db \
+  --network contributorhub-net \
+  -e POSTGRES_USER=contributorhub \
+  -e POSTGRES_PASSWORD=contributorhub \
+  -e POSTGRES_DB=contributorhub \
   -p 5432:5432 \
-  -v volunteerhub-pgdata:/var/lib/postgresql/data \
+  -v contributorhub-pgdata:/var/lib/postgresql/data \
   postgres:16-alpine
 ```
 
 ### 3. Build and start the API server
 
 ```bash
-docker build --target server -t volunteerhub-server .
+docker build --target server -t contributorhub-server .
 
 docker run -d \
-  --name volunteerhub-server \
-  --network volunteerhub-net \
-  -e DATABASE_URL="postgresql://volunteerhub:volunteerhub@volunteerhub-db:5432/volunteerhub" \
-  -e DIRECT_URL="postgresql://volunteerhub:volunteerhub@volunteerhub-db:5432/volunteerhub" \
-  -e DB_HOST=volunteerhub-db \
+  --name contributorhub-server \
+  --network contributorhub-net \
+  -e DATABASE_URL="postgresql://contributorhub:contributorhub@contributorhub-db:5432/contributorhub" \
+  -e DIRECT_URL="postgresql://contributorhub:contributorhub@contributorhub-db:5432/contributorhub" \
+  -e DB_HOST=contributorhub-db \
   -e DB_PORT=5432 \
-  -e DB_USER=volunteerhub \
+  -e DB_USER=contributorhub \
   -e NODE_ENV=production \
   -e PORT=4000 \
   -p 4000:4000 \
-  volunteerhub-server
+  contributorhub-server
 ```
 
 ### 4. Build and start the frontend
 
 ```bash
-docker build --target client -t volunteerhub-client .
+docker build --target client -t contributorhub-client .
 
 docker run -d \
-  --name volunteerhub-client \
-  --network volunteerhub-net \
+  --name contributorhub-client \
+  --network contributorhub-net \
   -p 3000:80 \
-  volunteerhub-client
+  contributorhub-client
 ```
 
 ### Using an external PostgreSQL database
@@ -294,14 +294,14 @@ If you have an existing PostgreSQL server, skip step 2 and adjust the `DATABASE_
 
 ```bash
 docker run -d \
-  --name volunteerhub-server \
-  -e DATABASE_URL="postgresql://user:password@your-db-host:5432/volunteerhub" \
-  -e DIRECT_URL="postgresql://user:password@your-db-host:5432/volunteerhub" \
+  --name contributorhub-server \
+  -e DATABASE_URL="postgresql://user:password@your-db-host:5432/contributorhub" \
+  -e DIRECT_URL="postgresql://user:password@your-db-host:5432/contributorhub" \
   -e DB_HOST=your-db-host \
   -e DB_PORT=5432 \
   -e DB_USER=user \
   -p 4000:4000 \
-  volunteerhub-server
+  contributorhub-server
 ```
 
 ---
@@ -321,8 +321,8 @@ This starts PostgreSQL on port 5432 with the standard credentials.
 ### Configure your local `.env`
 
 ```env
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 ```
 
 ### Run the app locally
@@ -333,8 +333,8 @@ npx prisma generate --schema prisma/schema.prisma
 npx prisma migrate dev --schema prisma/schema.prisma
 
 # Start the backend (in one terminal)
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
 npm run dev -w server
 
 # Start the frontend (in another terminal)
@@ -416,10 +416,10 @@ PostgreSQL data is stored in a Docker named volume (`pgdata`). This means:
 
 ```bash
 # Create a backup
-docker compose exec db pg_dump -U volunteerhub volunteerhub > backup.sql
+docker compose exec db pg_dump -U contributorhub contributorhub > backup.sql
 
 # Restore from backup
-docker compose exec -T db psql -U volunteerhub volunteerhub < backup.sql
+docker compose exec -T db psql -U contributorhub contributorhub < backup.sql
 ```
 
 ### Resetting the database
@@ -448,7 +448,7 @@ Containers communicate using Docker's internal DNS:
 |------|---------|-----------------|
 | 3000 | nginx (frontend + proxy) | http://localhost:3000 |
 | 4000 | Express API (direct) | http://localhost:4000 |
-| 5432 | PostgreSQL (direct) | `psql -h localhost -U volunteerhub` |
+| 5432 | PostgreSQL (direct) | `psql -h localhost -U contributorhub` |
 
 ### Limiting external access
 
@@ -498,10 +498,10 @@ docker system prune -f
 ### Remove individual containers (manual setup)
 
 ```bash
-docker stop volunteerhub-client volunteerhub-server volunteerhub-db
-docker rm volunteerhub-client volunteerhub-server volunteerhub-db
-docker network rm volunteerhub-net
-docker volume rm volunteerhub-pgdata
+docker stop contributorhub-client contributorhub-server contributorhub-db
+docker rm contributorhub-client contributorhub-server contributorhub-db
+docker network rm contributorhub-net
+docker volume rm contributorhub-pgdata
 ```
 
 ---

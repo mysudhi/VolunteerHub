@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Frontend - Page Load", () => {
   test("loads the application successfully", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/VolunteerHub/i);
+    await expect(page).toHaveTitle(/ContributorHub/i);
   });
 
   test("returns HTTP 200", async ({ page }) => {
@@ -66,9 +66,9 @@ test.describe("Frontend - Dashboard Page", () => {
 });
 
 test.describe("Frontend - Desktop Header", () => {
-  test("displays VolunteerHub branding", async ({ page }) => {
+  test("displays ContributorHub branding", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "VolunteerHub" })).toBeAttached();
+    await expect(page.getByRole("heading", { name: "ContributorHub" })).toBeAttached();
   });
 
   test("displays Org Dashboard badge", async ({ page }) => {

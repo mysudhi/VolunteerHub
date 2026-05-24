@@ -1,6 +1,6 @@
-# VolunteerHub User Guide
+# ContributorHub User Guide
 
-Welcome to VolunteerHub! This guide walks you through every screen and feature of the application so you can get started quickly — whether you're an organization admin managing volunteers or a volunteer looking for shifts.
+Welcome to ContributorHub! This guide walks you through every screen and feature of the application so you can get started quickly — whether you're an organization admin managing volunteers or a volunteer looking for shifts.
 
 ---
 
@@ -29,7 +29,7 @@ Welcome to VolunteerHub! This guide walks you through every screen and feature o
 
 ## Overview
 
-VolunteerHub is a web-based volunteer scheduling platform that helps organizations:
+ContributorHub is a web-based volunteer scheduling platform that helps organizations:
 
 - **Schedule** volunteer shifts with specific times and locations
 - **Assign** tasks to individual volunteers within shifts
@@ -45,12 +45,12 @@ The application works in any modern web browser (Chrome, Firefox, Safari, Edge) 
 ### Accessing the Application
 
 1. Open your web browser
-2. Navigate to the VolunteerHub URL provided by your organization administrator
+2. Navigate to the ContributorHub URL provided by your organization administrator
 3. You will see the login screen
 
 ### First-Time Users
 
-If this is your first time using VolunteerHub:
+If this is your first time using ContributorHub:
 1. Click **"Continue with Google"** to sign in with your Google account
 2. Your organization admin will assign you to the appropriate organization
 3. Once assigned, you'll see your personalized dashboard
@@ -63,10 +63,10 @@ The application has a clean, modern layout designed to work on any device.
 
 ### Desktop View (Full Application)
 
-![VolunteerHub Desktop View](docs/images/desktop_full_view.webp)
+![ContributorHub Desktop View](docs/images/desktop_full_view.webp)
 
 **What you see on desktop:**
-- **Top:** Navigation header with the VolunteerHub logo and your organization badge
+- **Top:** Navigation header with the ContributorHub logo and your organization badge
 - **Middle:** Main content area showing your dashboard, shifts, and other pages
 - **Layout:** Wide cards arranged in a grid for easy scanning
 
@@ -78,7 +78,7 @@ The desktop view takes advantage of larger screens to show more information at o
 
 ### Login Page
 
-**Purpose:** This is the authentication screen where you sign into your VolunteerHub account.
+**Purpose:** This is the authentication screen where you sign into your ContributorHub account.
 
 **What's on this screen:**
 
@@ -147,13 +147,13 @@ The desktop view takes advantage of larger screens to show more information at o
 
 | Element | Position | Description |
 |---------|----------|-------------|
-| **"VolunteerHub"** | Left side | The application name/logo — confirms you're in VolunteerHub |
+| **"ContributorHub"** | Left side | The application name/logo — confirms you're in ContributorHub |
 | **"Org Dashboard"** badge | Right side | A blue badge showing you're viewing your organization's dashboard |
 
 **How to use it:**
 - The header is always visible at the top of the page
 - The blue badge confirms which organization context you're currently in
-- In the future, clicking "VolunteerHub" will return you to the home/dashboard page
+- In the future, clicking "ContributorHub" will return you to the home/dashboard page
 
 ---
 
@@ -188,7 +188,7 @@ The desktop view takes advantage of larger screens to show more information at o
 
 ## User Roles
 
-VolunteerHub has three types of users, each with different capabilities:
+ContributorHub has three types of users, each with different capabilities:
 
 ### Volunteer (Default Role)
 
@@ -216,7 +216,7 @@ VolunteerHub has three types of users, each with different capabilities:
 
 ### Super Admin
 
-**Who:** Platform administrators who manage the entire VolunteerHub installation.
+**Who:** Platform administrators who manage the entire ContributorHub installation.
 
 **What you can do:**
 - Everything an OrgAdmin can do, plus:
@@ -314,9 +314,9 @@ Skills are competencies that your organization defines. Examples:
 
 ### Calendar Events
 
-VolunteerHub includes a calendar system to help you visualize your schedule:
+ContributorHub includes a calendar system to help you visualize your schedule:
 
-- **Internal events** — Created within VolunteerHub, automatically linked to shifts
+- **Internal events** — Created within ContributorHub, automatically linked to shifts
 - **Imported events** — Synced from external calendars (iCal format) for a unified view
 
 The calendar shows all-day events and timed events, making it easy to see your full schedule at a glance.
@@ -328,13 +328,13 @@ The calendar shows all-day events and timed events, making it easy to see your f
 ### General
 
 **Q: What browser should I use?**
-A: VolunteerHub works in any modern browser — Chrome, Firefox, Safari, or Edge. We recommend keeping your browser updated to the latest version.
+A: ContributorHub works in any modern browser — Chrome, Firefox, Safari, or Edge. We recommend keeping your browser updated to the latest version.
 
 **Q: Does it work on my phone?**
-A: Yes! VolunteerHub is designed to work on phones, tablets, and desktop computers. The layout automatically adjusts to your screen size.
+A: Yes! ContributorHub is designed to work on phones, tablets, and desktop computers. The layout automatically adjusts to your screen size.
 
 **Q: Do I need to install anything?**
-A: No installation required. VolunteerHub runs entirely in your web browser. Just navigate to the URL and start using it.
+A: No installation required. ContributorHub runs entirely in your web browser. Just navigate to the URL and start using it.
 
 ---
 
@@ -403,4 +403,4 @@ A: Note the error message and contact your organization admin. If you're a devel
 
 ---
 
-*This guide covers the current state of VolunteerHub. New features are being actively developed — check back for updates as the platform grows!*
+*This guide covers the current state of ContributorHub. New features are being actively developed — check back for updates as the platform grows!*

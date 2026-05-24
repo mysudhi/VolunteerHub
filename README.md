@@ -1,8 +1,8 @@
-# VolunteerHub
+# ContributorHub
 
 **An open-source, centralized volunteer scheduling platform for organizations of all sizes.**
 
-VolunteerHub empowers nonprofits, community groups, and event organizers to efficiently manage volunteers, coordinate shifts, assign tasks, and track skills — all from a single, modern web application.
+ContributorHub empowers nonprofits, community groups, and event organizers to efficiently manage volunteers, coordinate shifts, assign tasks, and track skills — all from a single, modern web application.
 
 ---
 
@@ -10,7 +10,7 @@ VolunteerHub empowers nonprofits, community groups, and event organizers to effi
 
 ### Vision
 
-Volunteer coordination is often fragmented across spreadsheets, group chats, and email threads. VolunteerHub aims to replace this patchwork with a purpose-built platform that makes scheduling seamless for both organizers and volunteers.
+Volunteer coordination is often fragmented across spreadsheets, group chats, and email threads. ContributorHub aims to replace this patchwork with a purpose-built platform that makes scheduling seamless for both organizers and volunteers.
 
 ### Core Objectives
 
@@ -170,8 +170,8 @@ npm install
 
 ```bash
 # Create PostgreSQL user and database
-sudo -u postgres psql -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+sudo -u postgres psql -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+sudo -u postgres psql -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 ### 3. Configure environment
@@ -179,8 +179,8 @@ sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
 Create a `.env` file in the project root:
 
 ```env
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 ```
@@ -196,8 +196,8 @@ npx prisma migrate dev --schema prisma/schema.prisma
 
 ```bash
 # Terminal 1 — Backend API
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
 npm run dev -w server
 
 # Terminal 2 — Frontend

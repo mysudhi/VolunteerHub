@@ -1,8 +1,8 @@
 {
-  "name": "volunteerhub",
+  "name": "contributorhub",
   "private": true,
   "version": "0.1.0",
-  "description": "VolunteerHub monorepo scaffold",
+  "description": "ContributorHub monorepo scaffold",
   "workspaces": [
     "client",
     "server",

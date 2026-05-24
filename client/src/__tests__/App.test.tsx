@@ -10,7 +10,7 @@ describe("App", () => {
 
   it("renders the DesktopHeader component", () => {
     render(<App />);
-    expect(screen.getByText("VolunteerHub")).toBeInTheDocument();
+    expect(screen.getByText("ContributorHub")).toBeInTheDocument();
   });
 
   it("renders the LoginPage when not authenticated", () => {

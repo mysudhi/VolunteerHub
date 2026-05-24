@@ -4,7 +4,7 @@
 
 ### Project Overview
 
-VolunteerHub is a multi-tenant volunteer scheduling platform. It's a TypeScript npm-workspaces monorepo with three packages: `client` (React + Vite), `server` (Express + tsx), and `shared` (types/schemas).
+ContributorHub is a multi-tenant volunteer scheduling platform. It's a TypeScript npm-workspaces monorepo with three packages: `client` (React + Vite), `server` (Express + tsx), and `shared` (types/schemas).
 
 ### Services
 
@@ -19,8 +19,8 @@ VolunteerHub is a multi-tenant volunteer scheduling platform. It's a TypeScript 
 The backend requires PostgreSQL connection env vars. Export them before running:
 
 ```bash
-export DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-export DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+export DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+export DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 npm run dev -w server
 ```
 
@@ -28,7 +28,7 @@ Or inline: `DATABASE_URL=... DIRECT_URL=... npm run dev -w server`
 
 ### Database
 
-- PostgreSQL 16 with user `volunteerhub` / password `volunteerhub` and database `volunteerhub`.
+- PostgreSQL 16 with user `contributorhub` / password `contributorhub` and database `contributorhub`.
 - Prisma ORM (v6.x) manages the schema at `prisma/schema.prisma`.
 - After schema changes: `npx prisma migrate dev --schema prisma/schema.prisma`
 - To regenerate client: `npx prisma generate --schema prisma/schema.prisma`

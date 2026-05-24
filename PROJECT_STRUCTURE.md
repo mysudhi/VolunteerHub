@@ -1,4 +1,4 @@
-# VolunteerHub Monorepo Structure
+# ContributorHub Monorepo Structure
 
 ```text
 .

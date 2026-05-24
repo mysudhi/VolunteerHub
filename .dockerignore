@@ -26,4 +26,4 @@ pnpm-debug.log*
 docs/images
 *.tar.gz
 *.tar
-volunteerhub-v*.tar.gz
+contributorhub-v*.tar.gz

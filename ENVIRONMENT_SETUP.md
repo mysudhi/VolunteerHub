@@ -1,6 +1,6 @@
 # Environment Setup Guide
 
-Step-by-step instructions to set up the VolunteerHub development environment from scratch on **Linux**, **macOS**, and **Windows**.
+Step-by-step instructions to set up the ContributorHub development environment from scratch on **Linux**, **macOS**, and **Windows**.
 
 ---
 
@@ -109,8 +109,8 @@ sudo pg_ctlcluster 16 main start
 **Create the database and user:**
 
 ```bash
-sudo -u postgres psql -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+sudo -u postgres psql -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+sudo -u postgres psql -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 ### macOS
@@ -136,11 +136,11 @@ brew services start postgresql@16
 **Create the database and user:**
 
 ```bash
-psql postgres -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-psql postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql postgres -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+psql postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
-> **Note:** On macOS with Homebrew, your system user is typically the PostgreSQL superuser, so `sudo -u postgres` is not needed. If you get a "role does not exist" error, try `createuser -s volunteerhub` instead.
+> **Note:** On macOS with Homebrew, your system user is typically the PostgreSQL superuser, so `sudo -u postgres` is not needed. If you get a "role does not exist" error, try `createuser -s contributorhub` instead.
 
 **Alternative — Using [Postgres.app](https://postgresapp.com/):**
 
@@ -168,8 +168,8 @@ psql postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
 4. Run:
 
 ```sql
-CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;
-CREATE DATABASE volunteerhub OWNER volunteerhub;
+CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;
+CREATE DATABASE contributorhub OWNER contributorhub;
 \q
 ```
 
@@ -186,8 +186,8 @@ Then create the user and database using psql as described above.
 ```powershell
 scoop install postgresql
 pg_ctl start -D ~/scoop/apps/postgresql/current/data
-psql postgres -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-psql postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql postgres -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+psql postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 **Verify PostgreSQL is running (all Windows options):**
@@ -204,8 +204,8 @@ pg_isready
 Create a `.env` file in the workspace root with the following content:
 
 ```env
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 ```
@@ -214,8 +214,8 @@ PORT=4000
 
 ```bash
 cat > .env << 'EOF'
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 EOF
@@ -225,8 +225,8 @@ EOF
 
 ```powershell
 @"
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 "@ | Out-File -Encoding utf8 .env
@@ -267,24 +267,24 @@ The backend requires `DATABASE_URL` and `DIRECT_URL` environment variables.
 **Linux / macOS:**
 
 ```bash
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
 npm run dev -w server
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-$env:DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-$env:DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+$env:DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+$env:DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 npm run dev -w server
 ```
 
 **Windows (Command Prompt):**
 
 ```cmd
-set DATABASE_URL=postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub
-set DIRECT_URL=postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub
+set DATABASE_URL=postgresql://contributorhub:contributorhub@localhost:5432/contributorhub
+set DIRECT_URL=postgresql://contributorhub:contributorhub@localhost:5432/contributorhub
 npm run dev -w server
 ```
 
@@ -326,7 +326,7 @@ curl http://localhost:4000/health
 
 ### Frontend
 
-Open http://localhost:5173/ in a browser. You should see the VolunteerHub dashboard with:
+Open http://localhost:5173/ in a browser. You should see the ContributorHub dashboard with:
 - A "Welcome back" login section
 - An "Upcoming Shifts" section with mock shift cards
 

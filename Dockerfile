@@ -1,5 +1,5 @@
 # =============================================================================
-# VolunteerHub — Multi-stage Docker build
+# ContributorHub — Multi-stage Docker build
 # Produces the Express API server image with Prisma client
 # =============================================================================
 

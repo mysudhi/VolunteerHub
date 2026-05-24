@@ -10,5 +10,5 @@ echo "PostgreSQL is ready."
 echo "Running Prisma migrations..."
 npx prisma migrate deploy --schema prisma/schema.prisma
 
-echo "Starting VolunteerHub API server..."
+echo "Starting ContributorHub API server..."
 exec node server/dist/index.js

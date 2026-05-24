@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-This guide helps you resolve common issues when setting up and running the VolunteerHub development environment on **Linux**, **macOS**, and **Windows**. It covers problems encountered during setup and anticipates issues for developers new to this stack.
+This guide helps you resolve common issues when setting up and running the ContributorHub development environment on **Linux**, **macOS**, and **Windows**. It covers problems encountered during setup and anticipates issues for developers new to this stack.
 
 > **Legend:** Commands are shown for all platforms where they differ. If no platform label is shown, the command works the same everywhere.
 
@@ -175,7 +175,7 @@ npm install
 
 ### Workspace linking not working
 
-**Symptom:** Cannot find module `@volunteerhub/shared` or similar workspace package errors.
+**Symptom:** Cannot find module `@contributorhub/shared` or similar workspace package errors.
 
 **Fix (all platforms):** Ensure you run `npm install` from the **workspace root** (the folder containing the root `package.json` with `"workspaces"`), not from inside a sub-package.
 
@@ -281,13 +281,13 @@ Or use the Services GUI:
 
 ### Cannot create user or database
 
-**Symptom:** `FATAL: role "volunteerhub" does not exist` or permission errors during creation.
+**Symptom:** `FATAL: role "contributorhub" does not exist` or permission errors during creation.
 
 **Linux:**
 
 ```bash
-sudo -u postgres psql -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+sudo -u postgres psql -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+sudo -u postgres psql -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 **macOS (Homebrew):**
@@ -295,14 +295,14 @@ sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
 Your macOS user is typically the PostgreSQL superuser, so `sudo -u postgres` is not needed:
 
 ```bash
-psql postgres -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-psql postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql postgres -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+psql postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 If that fails, try:
 ```bash
-createuser -s volunteerhub
-createdb -O volunteerhub volunteerhub
+createuser -s contributorhub
+createdb -O contributorhub contributorhub
 ```
 
 **Windows (SQL Shell):**
@@ -313,16 +313,16 @@ createdb -O volunteerhub volunteerhub
 4. Run:
 
 ```sql
-CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;
-CREATE DATABASE volunteerhub OWNER volunteerhub;
+CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;
+CREATE DATABASE contributorhub OWNER contributorhub;
 \q
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-psql -U postgres -c "CREATE USER volunteerhub WITH PASSWORD 'volunteerhub' CREATEDB;"
-psql -U postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql -U postgres -c "CREATE USER contributorhub WITH PASSWORD 'contributorhub' CREATEDB;"
+psql -U postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 ```
 
 You will be prompted for the postgres superuser password.
@@ -331,7 +331,7 @@ You will be prompted for the postgres superuser password.
 
 ### Authentication failed
 
-**Symptom:** `FATAL: password authentication failed for user "volunteerhub"`
+**Symptom:** `FATAL: password authentication failed for user "contributorhub"`
 
 **Fixes (all platforms):**
 
@@ -413,8 +413,8 @@ Alternatively, change the PostgreSQL port in `postgresql.conf`.
 
 ```bash
 cat > .env << 'EOF'
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 EOF
@@ -424,8 +424,8 @@ EOF
 
 ```powershell
 @"
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 NODE_ENV="development"
 PORT=4000
 "@ | Out-File -Encoding utf8 .env
@@ -449,24 +449,24 @@ PORT=4000
 **Linux / macOS:**
 
 ```bash
-DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
-DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub" \
+DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
+DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub" \
 npm run dev -w server
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-$env:DATABASE_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
-$env:DIRECT_URL="postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub"
+$env:DATABASE_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
+$env:DIRECT_URL="postgresql://contributorhub:contributorhub@localhost:5432/contributorhub"
 npm run dev -w server
 ```
 
 **Windows (Command Prompt):**
 
 ```cmd
-set DATABASE_URL=postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub
-set DIRECT_URL=postgresql://volunteerhub:volunteerhub@localhost:5432/volunteerhub
+set DATABASE_URL=postgresql://contributorhub:contributorhub@localhost:5432/contributorhub
+set DIRECT_URL=postgresql://contributorhub:contributorhub@localhost:5432/contributorhub
 npm run dev -w server
 ```
 
@@ -560,17 +560,17 @@ npx prisma generate --schema prisma/schema.prisma
 
 **Linux:**
 ```bash
-sudo -u postgres psql -c "ALTER USER volunteerhub CREATEDB;"
+sudo -u postgres psql -c "ALTER USER contributorhub CREATEDB;"
 ```
 
 **macOS:**
 ```bash
-psql postgres -c "ALTER USER volunteerhub CREATEDB;"
+psql postgres -c "ALTER USER contributorhub CREATEDB;"
 ```
 
 **Windows:**
 ```powershell
-psql -U postgres -c "ALTER USER volunteerhub CREATEDB;"
+psql -U postgres -c "ALTER USER contributorhub CREATEDB;"
 ```
 
 ---
@@ -896,8 +896,8 @@ If things are in a broken state and you want to start fresh:
 
 ```bash
 rm -rf node_modules client/node_modules server/node_modules shared/node_modules package-lock.json
-sudo -u postgres psql -c "DROP DATABASE IF EXISTS volunteerhub;"
-sudo -u postgres psql -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+sudo -u postgres psql -c "DROP DATABASE IF EXISTS contributorhub;"
+sudo -u postgres psql -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 npm install
 npx prisma generate --schema prisma/schema.prisma
 npx prisma migrate dev --schema prisma/schema.prisma
@@ -907,8 +907,8 @@ npx prisma migrate dev --schema prisma/schema.prisma
 
 ```bash
 rm -rf node_modules client/node_modules server/node_modules shared/node_modules package-lock.json
-psql postgres -c "DROP DATABASE IF EXISTS volunteerhub;"
-psql postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql postgres -c "DROP DATABASE IF EXISTS contributorhub;"
+psql postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 npm install
 npx prisma generate --schema prisma/schema.prisma
 npx prisma migrate dev --schema prisma/schema.prisma
@@ -918,8 +918,8 @@ npx prisma migrate dev --schema prisma/schema.prisma
 
 ```powershell
 Remove-Item -Recurse -Force node_modules, client\node_modules, server\node_modules, shared\node_modules, package-lock.json -ErrorAction SilentlyContinue
-psql -U postgres -c "DROP DATABASE IF EXISTS volunteerhub;"
-psql -U postgres -c "CREATE DATABASE volunteerhub OWNER volunteerhub;"
+psql -U postgres -c "DROP DATABASE IF EXISTS contributorhub;"
+psql -U postgres -c "CREATE DATABASE contributorhub OWNER contributorhub;"
 npm install
 npx prisma generate --schema prisma/schema.prisma
 npx prisma migrate dev --schema prisma/schema.prisma

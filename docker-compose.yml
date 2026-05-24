@@ -4,15 +4,15 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: volunteerhub
-      POSTGRES_PASSWORD: volunteerhub
-      POSTGRES_DB: volunteerhub
+      POSTGRES_USER: contributorhub
+      POSTGRES_PASSWORD: contributorhub
+      POSTGRES_DB: contributorhub
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U volunteerhub"]
+      test: ["CMD-SHELL", "pg_isready -U contributorhub"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -24,11 +24,11 @@ services:
       target: server
     restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql://volunteerhub:volunteerhub@db:5432/volunteerhub
-      DIRECT_URL: postgresql://volunteerhub:volunteerhub@db:5432/volunteerhub
+      DATABASE_URL: postgresql://contributorhub:contributorhub@db:5432/contributorhub
+      DIRECT_URL: postgresql://contributorhub:contributorhub@db:5432/contributorhub
       DB_HOST: db
       DB_PORT: "5432"
-      DB_USER: volunteerhub
+      DB_USER: contributorhub
       NODE_ENV: production
       PORT: "4000"
     ports:
