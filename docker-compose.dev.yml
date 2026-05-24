@@ -1,0 +1,21 @@
+services:
+  # ---- PostgreSQL database (development) ----
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: volunteerhub
+      POSTGRES_PASSWORD: volunteerhub
+      POSTGRES_DB: volunteerhub
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U volunteerhub"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata-dev:
