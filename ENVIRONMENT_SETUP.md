@@ -254,7 +254,7 @@ npx prisma generate --schema prisma/schema.prisma
 npx prisma migrate dev --schema prisma/schema.prisma
 ```
 
-This generates the type-safe Prisma Client and creates all database tables (Organization, User, Shift, Task, Skill, CalendarEvent, ShiftSkill, ShiftVolunteer).
+This generates the type-safe Prisma Client and creates all database tables (Organization, User, Shift, Task, Skill, CalendarEvent, ShiftSkill, ShiftContributor).
 
 ---
 

@@ -1,8 +1,8 @@
 # ContributorHub
 
-**An open-source, centralized volunteer scheduling platform for organizations of all sizes.**
+**An open-source, centralized contributor scheduling platform for organizations of all sizes.**
 
-ContributorHub empowers nonprofits, community groups, and event organizers to efficiently manage volunteers, coordinate shifts, assign tasks, and track skills — all from a single, modern web application.
+ContributorHub empowers nonprofits, community groups, and event organizers to efficiently manage contributors, coordinate shifts, assign tasks, and track skills — all from a single, modern web application.
 
 ---
 
@@ -10,15 +10,15 @@ ContributorHub empowers nonprofits, community groups, and event organizers to ef
 
 ### Vision
 
-Volunteer coordination is often fragmented across spreadsheets, group chats, and email threads. ContributorHub aims to replace this patchwork with a purpose-built platform that makes scheduling seamless for both organizers and volunteers.
+Contributor coordination is often fragmented across spreadsheets, group chats, and email threads. ContributorHub aims to replace this patchwork with a purpose-built platform that makes scheduling seamless for both organizers and contributors.
 
 ### Core Objectives
 
-- **Centralized Scheduling** — Provide a single source of truth for all volunteer shifts, tasks, and availability across an organization.
+- **Centralized Scheduling** — Provide a single source of truth for all contributor shifts, tasks, and availability across an organization.
 - **Multi-Tenant Architecture** — Support multiple organizations on a single deployment, each with isolated data, branding, and configuration.
-- **Role-Based Access Control** — Offer distinct experiences for SuperAdmins (platform-level), OrgAdmins (organization managers), and Volunteers.
-- **Shift & Task Management** — Enable creation, assignment, and tracking of volunteer shifts with granular task breakdowns.
-- **Skills Matching** — Allow organizations to define required skills for shifts and match them to volunteer capabilities.
+- **Role-Based Access Control** — Offer distinct experiences for SuperAdmins (platform-level), OrgAdmins (organization managers), and Contributors.
+- **Shift & Task Management** — Enable creation, assignment, and tracking of contributor shifts with granular task breakdowns.
+- **Skills Matching** — Allow organizations to define required skills for shifts and match them to contributor capabilities.
 - **Calendar Integration** — Support internal event scheduling and future iCal import/export for external calendar sync.
 - **Extensibility** — Provide a plugin/hook system so custom logic (notifications, integrations) can be added without modifying core code.
 - **Mobile-First Design** — Deliver a responsive UI that works equally well on phones, tablets, and desktops.
@@ -70,7 +70,7 @@ The frontend is a single-page application with a responsive layout featuring a d
 | [Zod](https://zod.dev/) | Runtime schema validation (env vars, request payloads) |
 | [Prisma](https://www.prisma.io/) 6 | Type-safe ORM for PostgreSQL |
 
-The backend exposes a RESTful API with multi-tenant context via the `x-org-id` header. It includes a plugin hook registry for extensibility (e.g., `onShiftCreated`, `onVolunteerApplied` events).
+The backend exposes a RESTful API with multi-tenant context via the `x-org-id` header. It includes a plugin hook registry for extensibility (e.g., `onShiftCreated`, `onContributorApplied` events).
 
 ### Shared Library — `shared/`
 
@@ -96,20 +96,20 @@ The database schema includes the following entities:
 |-------|-------------|
 | **Organization** | Multi-tenant org with branding (logo, color, font) and timezone |
 | **User** | Members with email auth or Google OAuth, tied to an organization and role |
-| **Shift** | Time-bound volunteer slots with capacity, status, and location |
-| **Task** | Granular work items within a shift, assignable to individual volunteers |
+| **Shift** | Time-bound contributor slots with capacity, status, and location |
+| **Task** | Granular work items within a shift, assignable to individual contributors |
 | **Skill** | Organization-defined competencies that can be required for shifts |
 | **CalendarEvent** | Internal or imported (iCal) events linked to shifts |
 | **ShiftSkill** | Many-to-many: skills required for a shift |
-| **ShiftVolunteer** | Many-to-many: volunteers assigned to a shift |
+| **ShiftContributor** | Many-to-many: contributors assigned to a shift |
 
 ### Role-Based Access Control
 
 | Role | Scope | Capabilities |
 |------|-------|-------------|
 | **SuperAdmin** | Platform-wide | Manage all organizations, users, and platform settings |
-| **OrgAdmin** | Single organization | Create/manage shifts, tasks, volunteers, and skills |
-| **Volunteer** | Single organization | View shifts, apply, complete assigned tasks |
+| **OrgAdmin** | Single organization | Create/manage shifts, tasks, contributors, and skills |
+| **Contributor** | Single organization | View shifts, apply, complete assigned tasks |
 
 ---
 
@@ -237,7 +237,7 @@ Tenant isolation is achieved through the `x-org-id` HTTP header. The `tenantCont
 
 ### Plugin Hook System
 
-The `HookRegistry` class provides an event-driven extensibility mechanism. Code can register handlers for lifecycle events (e.g., `onShiftCreated`, `onVolunteerApplied`) without coupling to core logic. This enables features like:
+The `HookRegistry` class provides an event-driven extensibility mechanism. Code can register handlers for lifecycle events (e.g., `onShiftCreated`, `onContributorApplied`) without coupling to core logic. This enables features like:
 - Email/SMS notifications
 - Slack/Discord integrations
 - Audit logging
@@ -259,8 +259,8 @@ Prisma provides a type-safe database client generated from the schema, making it
 ## Roadmap
 
 - [ ] Authentication (Google OAuth + email/password)
-- [ ] Full CRUD API for shifts, tasks, and volunteers
-- [ ] Volunteer self-service shift signup
+- [ ] Full CRUD API for shifts, tasks, and contributors
+- [ ] Contributor self-service shift signup
 - [ ] Admin dashboard with analytics
 - [ ] Email notifications (shift reminders, assignments)
 - [ ] iCal calendar sync (import/export)

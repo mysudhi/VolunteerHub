@@ -1,6 +1,6 @@
 # ContributorHub User Guide
 
-Welcome to ContributorHub! This guide walks you through every screen and feature of the application so you can get started quickly — whether you're an organization admin managing volunteers or a volunteer looking for shifts.
+Welcome to ContributorHub! This guide walks you through every screen and feature of the application so you can get started quickly — whether you're an organization admin managing contributors or a contributor looking for shifts.
 
 ---
 
@@ -19,7 +19,7 @@ Welcome to ContributorHub! This guide walks you through every screen and feature
 7. [Features Guide](#features-guide)
    - [Viewing Shifts](#viewing-shifts)
    - [Managing Shifts (Admin)](#managing-shifts-admin)
-   - [Signing Up for Shifts (Volunteer)](#signing-up-for-shifts-volunteer)
+   - [Signing Up for Shifts (Contributor)](#signing-up-for-shifts-contributor)
    - [Tasks Within Shifts](#tasks-within-shifts)
    - [Skills and Matching](#skills-and-matching)
    - [Calendar Events](#calendar-events)
@@ -29,11 +29,11 @@ Welcome to ContributorHub! This guide walks you through every screen and feature
 
 ## Overview
 
-ContributorHub is a web-based volunteer scheduling platform that helps organizations:
+ContributorHub is a web-based contributor scheduling platform that helps organizations:
 
-- **Schedule** volunteer shifts with specific times and locations
-- **Assign** tasks to individual volunteers within shifts
-- **Track** skills and match volunteers to appropriate roles
+- **Schedule** contributor shifts with specific times and locations
+- **Assign** tasks to individual contributors within shifts
+- **Track** skills and match contributors to appropriate roles
 - **Manage** multiple organizations from a single platform
 
 The application works in any modern web browser (Chrome, Firefox, Safari, Edge) on both desktop computers and mobile devices.
@@ -103,7 +103,7 @@ The desktop view takes advantage of larger screens to show more information at o
 
 ### Dashboard Page
 
-**Purpose:** The Dashboard is your home screen after logging in. It shows your upcoming volunteer shifts at a glance so you always know what's next.
+**Purpose:** The Dashboard is your home screen after logging in. It shows your upcoming contributor shifts at a glance so you always know what's next.
 
 **What's on this screen:**
 
@@ -111,7 +111,7 @@ The desktop view takes advantage of larger screens to show more information at o
 |---------|-------------|
 | **"Upcoming Shifts"** heading | Section title indicating these are your next scheduled shifts |
 | **Shift cards** | White cards showing each shift's name and time |
-| **Shift title** | The name of the volunteer activity (e.g., "Food Drive") |
+| **Shift title** | The name of the contributor activity (e.g., "Food Drive") |
 | **Shift time** | The start and end time for the shift (e.g., "08:00 - 12:00") |
 
 **The shift cards displayed:**
@@ -190,7 +190,7 @@ The desktop view takes advantage of larger screens to show more information at o
 
 ContributorHub has three types of users, each with different capabilities:
 
-### Volunteer (Default Role)
+### Contributor (Default Role)
 
 **Who:** Anyone who signs up to help with shifts and tasks.
 
@@ -203,15 +203,15 @@ ContributorHub has three types of users, each with different capabilities:
 
 ### Organization Admin (OrgAdmin)
 
-**Who:** Organization managers who coordinate volunteer activities.
+**Who:** Organization managers who coordinate contributor activities.
 
 **What you can do:**
-- Everything a Volunteer can do, plus:
+- Everything a Contributor can do, plus:
 - Create and manage shifts (set times, locations, capacity)
 - Define tasks within shifts
-- Assign volunteers to specific tasks
+- Assign contributors to specific tasks
 - Manage organization skills/competencies
-- View all volunteers and their assignments
+- View all contributors and their assignments
 - Customize organization branding (logo, colors)
 
 ### Super Admin
@@ -231,19 +231,19 @@ ContributorHub has three types of users, each with different capabilities:
 ### Viewing Shifts
 
 **What are shifts?**
-Shifts are scheduled time blocks when volunteers are needed. Each shift has:
+Shifts are scheduled time blocks when contributors are needed. Each shift has:
 - A **title** describing the activity
 - A **start and end time**
 - A **location** (where to show up)
-- A **capacity** (how many volunteers are needed)
+- A **capacity** (how many contributors are needed)
 - A **status** (Draft, Open, Filled, or Cancelled)
 
 **Shift statuses explained:**
 
 | Status | Meaning | What to do |
 |--------|---------|-----------|
-| **DRAFT** | Shift is being planned, not yet visible to volunteers | Wait for admin to publish |
-| **OPEN** | Shift is accepting volunteer signups | Sign up if interested! |
+| **DRAFT** | Shift is being planned, not yet visible to contributors | Wait for admin to publish |
+| **OPEN** | Shift is accepting contributor signups | Sign up if interested! |
 | **FILLED** | All spots have been taken | Check back later or look for other shifts |
 | **CANCELLED** | Shift has been cancelled | No action needed |
 
@@ -254,16 +254,16 @@ Shifts are scheduled time blocks when volunteers are needed. Each shift has:
 As an OrgAdmin, you can create and manage shifts:
 
 1. **Create a shift** — Set the title, description, time, location, and capacity
-2. **Set required skills** — Specify what competencies volunteers need
-3. **Publish the shift** — Change status from DRAFT to OPEN so volunteers can see it
-4. **Monitor signups** — Track how many volunteers have signed up
+2. **Set required skills** — Specify what competencies contributors need
+3. **Publish the shift** — Change status from DRAFT to OPEN so contributors can see it
+4. **Monitor signups** — Track how many contributors have signed up
 5. **Cancel if needed** — Mark a shift as CANCELLED if plans change
 
 ---
 
-### Signing Up for Shifts (Volunteer)
+### Signing Up for Shifts (Contributor)
 
-As a volunteer:
+As a contributor:
 
 1. Browse available shifts on the **Shifts** page (or via the Dashboard)
 2. Check the time, location, and required skills
@@ -278,7 +278,7 @@ As a volunteer:
 Shifts can be broken down into smaller tasks:
 
 **What are tasks?**
-Tasks are specific activities within a shift that can be assigned to individual volunteers. For example, a "Food Drive" shift might have tasks like:
+Tasks are specific activities within a shift that can be assigned to individual contributors. For example, a "Food Drive" shift might have tasks like:
 - Set up tables (7:30 AM)
 - Sort donations (8:00 AM)
 - Distribute food (9:00 AM)
@@ -306,9 +306,9 @@ Skills are competencies that your organization defines. Examples:
 
 **How skills work:**
 1. Admins define skills for the organization
-2. Volunteers add skills to their profile
+2. Contributors add skills to their profile
 3. Admins can require specific skills for shifts
-4. The system helps match qualified volunteers to appropriate shifts
+4. The system helps match qualified contributors to appropriate shifts
 
 ---
 
@@ -369,14 +369,14 @@ A: Each shift card shows the location. Check the shift details for the full addr
 
 ### For Admins
 
-**Q: How do I add volunteers to my organization?**
-A: Volunteers are added when they sign in and are assigned to your organization. Future updates will include invite links and bulk import.
+**Q: How do I add contributors to my organization?**
+A: Contributors are added when they sign in and are assigned to your organization. Future updates will include invite links and bulk import.
 
 **Q: Can I create recurring shifts?**
 A: Recurring shifts are on the roadmap. For now, create individual shifts for each occurrence.
 
 **Q: How do I customize my organization's branding?**
-A: Organization settings allow you to set a custom logo, primary color, and font family. These appear throughout the application for your volunteers.
+A: Organization settings allow you to set a custom logo, primary color, and font family. These appear throughout the application for your contributors.
 
 ---
 

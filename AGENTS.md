@@ -4,7 +4,7 @@
 
 ### Project Overview
 
-ContributorHub is a multi-tenant volunteer scheduling platform. It's a TypeScript npm-workspaces monorepo with three packages: `client` (React + Vite), `server` (Express + tsx), and `shared` (types/schemas).
+ContributorHub is a multi-tenant contributor scheduling platform. It's a TypeScript npm-workspaces monorepo with three packages: `client` (React + Vite), `server` (Express + tsx), and `shared` (types/schemas).
 
 ### Services
 
