@@ -63,8 +63,6 @@ The application has a clean, modern layout designed to work on any device.
 
 ### Desktop View (Full Application)
 
-![ContributorHub Desktop View](docs/images/desktop_full_view.webp)
-
 **What you see on desktop:**
 - **Top:** Navigation header with the ContributorHub logo and your organization badge
 - **Middle:** Main content area showing your dashboard, shifts, and other pages
@@ -158,8 +156,6 @@ The desktop view takes advantage of larger screens to show more information at o
 ---
 
 ### Mobile Navigation
-
-![Mobile View](docs/images/mobile_view.webp)
 
 **Purpose:** On phones and small tablets, a bottom tab bar replaces the desktop header for thumb-friendly navigation.
 
@@ -393,12 +389,7 @@ A: Note the error message and contact your organization admin. If you're a devel
 
 ---
 
-## Screenshots Reference
 
-| Screen | Description |
-|--------|-------------|
-| ![Desktop Full View](docs/images/desktop_full_view.webp) | Complete desktop application showing header, login, and shifts |
-| ![Mobile View](docs/images/mobile_view.webp) | Mobile layout with bottom tab navigation |
 
 
 ---
