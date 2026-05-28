@@ -24,12 +24,12 @@ describe("HookRegistry", () => {
     });
   });
 
-  it("dispatches onVolunteerApplied to registered handlers", async () => {
+  it("dispatches onContributorApplied to registered handlers", async () => {
     const registry = new HookRegistry();
     const handler = vi.fn();
 
-    registry.register("onVolunteerApplied", handler);
-    await registry.dispatch("onVolunteerApplied", {
+    registry.register("onContributorApplied", handler);
+    await registry.dispatch("onContributorApplied", {
       shiftId: "shift-1",
       userId: "user-1",
       organizationId: "org-1"
@@ -81,7 +81,7 @@ describe("HookRegistry", () => {
     const volunteerHandler = vi.fn();
 
     registry.register("onShiftCreated", shiftHandler);
-    registry.register("onVolunteerApplied", volunteerHandler);
+    registry.register("onContributorApplied", volunteerHandler);
 
     await registry.dispatch("onShiftCreated", {
       shiftId: "shift-1",

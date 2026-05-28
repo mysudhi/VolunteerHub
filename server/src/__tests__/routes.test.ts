@@ -18,8 +18,8 @@ describe("API Router", () => {
   it("returns 404 for POST to undefined API routes", async () => {
     const app = createApp();
     const response = await request(app)
-      .post("/api/shifts")
-      .send({ title: "Test Shift" });
+      .post("/api/nonexistent")
+      .send({ title: "Test" });
     expect(response.status).toBe(404);
   });
 

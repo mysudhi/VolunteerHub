@@ -14,12 +14,12 @@ describe("RBAC roles", () => {
     expect(roles).toContain("OrgAdmin");
   });
 
-  it("includes Volunteer role", () => {
-    expect(roles).toContain("Volunteer");
+  it("includes Contributor role", () => {
+    expect(roles).toContain("Contributor");
   });
 
   it("roles are in the expected order", () => {
-    expect(roles).toEqual(["SuperAdmin", "OrgAdmin", "Volunteer"]);
+    expect(roles).toEqual(["SuperAdmin", "OrgAdmin", "Contributor"]);
   });
 
   it("roles array is a tuple (as const)", () => {

@@ -11,7 +11,7 @@ datasource db {
 enum Role {
   SuperAdmin
   OrgAdmin
-  Volunteer
+  Contributor
 }
 
 enum ShiftStatus {
@@ -54,70 +54,70 @@ model Organization {
 }
 
 model User {
-  id               String           @id @default(cuid())
-  organizationId   String?
-  email            String           @unique
-  firstName        String
-  lastName         String
-  passwordHash     String?
-  googleId         String?          @unique
-  role             Role             @default(Volunteer)
-  isActive         Boolean          @default(true)
-  phone            String?
-  organization     Organization?    @relation(fields: [organizationId], references: [id], onDelete: SetNull)
-  assignedTasks    Task[]           @relation("TaskAssignee")
-  createdEvents    CalendarEvent[]  @relation("EventCreator")
-  shiftAssignments ShiftVolunteer[]
-  createdShifts    Shift[]          @relation("ShiftCreator")
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
-  deletedAt        DateTime?
+  id                  String              @id @default(cuid())
+  organizationId      String?
+  email               String              @unique
+  firstName           String
+  lastName            String
+  passwordHash        String?
+  googleId            String?             @unique
+  role                Role                @default(Contributor)
+  isActive            Boolean             @default(true)
+  phone               String?
+  organization        Organization?       @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  assignedTasks       Task[]              @relation("TaskAssignee")
+  createdEvents       CalendarEvent[]     @relation("EventCreator")
+  shiftAssignments    ShiftContributor[]
+  createdShifts       Shift[]             @relation("ShiftCreator")
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  deletedAt           DateTime?
 
   @@index([organizationId, role])
   @@index([isActive])
 }
 
 model Shift {
-  id               String           @id @default(cuid())
-  organizationId   String
-  createdById      String?
-  title            String
-  description      String?
-  location         String?
-  startsAt         DateTime
-  endsAt           DateTime
-  capacity         Int              @default(1)
-  status           ShiftStatus      @default(OPEN)
-  organization     Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  createdBy        User?            @relation("ShiftCreator", fields: [createdById], references: [id], onDelete: SetNull)
-  tasks            Task[]
-  requiredSkills   ShiftSkill[]
-  volunteerLinks   ShiftVolunteer[]
-  calendarEvents   CalendarEvent[]
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
-  deletedAt        DateTime?
+  id                String             @id @default(cuid())
+  organizationId    String
+  createdById       String?
+  title             String
+  description       String?
+  location          String?
+  startsAt          DateTime
+  endsAt            DateTime
+  capacity          Int                @default(1)
+  status            ShiftStatus        @default(OPEN)
+  organization      Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy         User?              @relation("ShiftCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  tasks             Task[]
+  requiredSkills    ShiftSkill[]
+  contributorLinks  ShiftContributor[]
+  calendarEvents    CalendarEvent[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  deletedAt         DateTime?
 
   @@index([organizationId, startsAt, endsAt])
   @@index([organizationId, status])
 }
 
 model Task {
-  id                 String         @id @default(cuid())
-  organizationId     String
-  shiftId            String
-  assignedVolunteerId String?
-  title              String
-  details            String?
-  sortOrder          Int            @default(0)
-  status             TaskStatus     @default(TODO)
-  dueAt              DateTime?
-  organization       Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  shift              Shift          @relation(fields: [shiftId], references: [id], onDelete: Cascade)
-  assignedVolunteer  User?          @relation("TaskAssignee", fields: [assignedVolunteerId], references: [id], onDelete: SetNull)
-  createdAt          DateTime       @default(now())
-  updatedAt          DateTime       @updatedAt
-  deletedAt          DateTime?
+  id                    String         @id @default(cuid())
+  organizationId        String
+  shiftId               String
+  assignedContributorId String?
+  title                 String
+  details               String?
+  sortOrder             Int            @default(0)
+  status                TaskStatus     @default(TODO)
+  dueAt                 DateTime?
+  organization          Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  shift                 Shift          @relation(fields: [shiftId], references: [id], onDelete: Cascade)
+  assignedContributor   User?          @relation("TaskAssignee", fields: [assignedContributorId], references: [id], onDelete: SetNull)
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+  deletedAt             DateTime?
 
   @@index([organizationId, status])
   @@index([shiftId, status])
@@ -173,12 +173,12 @@ model ShiftSkill {
   @@id([shiftId, skillId])
 }
 
-model ShiftVolunteer {
+model ShiftContributor {
   shiftId     String
   userId      String
   assignedAt  DateTime   @default(now())
   shift       Shift      @relation(fields: [shiftId], references: [id], onDelete: Cascade)
-  volunteer   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contributor User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   deletedAt   DateTime?

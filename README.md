@@ -129,9 +129,10 @@ The database schema includes the following entities:
 ├── server/                 # Express API backend
 │   ├── src/
 │   │   ├── config/         # Environment validation
-│   │   ├── middleware/     # Tenant context, auth (future)
+│   │   ├── auth/           # Password hashing, JWT, Google OAuth
+│   │   ├── middleware/     # Tenant context, auth guards
 │   │   ├── plugins/        # Hook registry for extensibility
-│   │   ├── routes/         # API route handlers
+│   │   ├── routes/         # API route handlers (auth, shifts, tasks, contributors)
 │   │   ├── app.ts          # Express app factory
 │   │   └── index.ts        # Server entry point
 │   └── package.json
@@ -229,6 +230,53 @@ Run from the workspace root:
 
 ---
 
+## API Reference
+
+All API endpoints require authentication via `Authorization: Bearer <token>` header unless noted. Multi-tenant routes require the `x-org-id` header.
+
+### Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register with email/password |
+| POST | `/api/auth/login` | Login with email/password |
+| GET | `/api/auth/google` | Get Google OAuth redirect URL |
+| GET | `/api/auth/google/callback` | Google OAuth callback (redirects to frontend) |
+| GET | `/api/auth/google/status` | Check if Google OAuth is configured |
+| GET | `/api/auth/me` | Get current user profile |
+
+### Shifts
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/shifts` | List shifts (filterable by `?status=OPEN`) |
+| GET | `/api/shifts/:id` | Get shift with tasks and contributors |
+| POST | `/api/shifts` | Create a shift (requires `x-org-id`) |
+| PATCH | `/api/shifts/:id` | Update shift fields |
+| DELETE | `/api/shifts/:id` | Soft-delete a shift |
+| POST | `/api/shifts/:id/contributors` | Assign a contributor to a shift |
+| DELETE | `/api/shifts/:id/contributors/:userId` | Remove a contributor from a shift |
+
+### Tasks
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/tasks` | List tasks (filterable by `?shiftId=` and `?status=`) |
+| GET | `/api/tasks/:id` | Get task with shift and assignee details |
+| POST | `/api/tasks` | Create a task within a shift (requires `x-org-id`) |
+| PATCH | `/api/tasks/:id` | Update task fields (title, status, assignee, etc.) |
+| DELETE | `/api/tasks/:id` | Soft-delete a task |
+
+### Contributors
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/contributors` | List contributors (filterable by `?role=` and `?active=`) |
+| GET | `/api/contributors/:id` | Get contributor with shifts and tasks |
+| PATCH | `/api/contributors/:id` | Update contributor profile or role |
+
+---
+
 ## Key Design Decisions
 
 ### Multi-Tenancy via Headers
@@ -258,8 +306,9 @@ Prisma provides a type-safe database client generated from the schema, making it
 
 ## Roadmap
 
-- [ ] Authentication (Google OAuth + email/password)
-- [ ] Full CRUD API for shifts, tasks, and contributors
+- [x] Authentication (Google OAuth + email/password)
+- [x] Full CRUD API for shifts, tasks, and contributors
+- [x] Automated test suite (unit + integration + E2E)
 - [ ] Contributor self-service shift signup
 - [ ] Admin dashboard with analytics
 - [ ] Email notifications (shift reminders, assignments)
@@ -267,7 +316,6 @@ Prisma provides a type-safe database client generated from the schema, making it
 - [ ] Skills matching and recommendations
 - [ ] Mobile PWA support
 - [ ] API rate limiting and security hardening
-- [ ] Automated test suite (unit + integration + E2E)
 
 ---
 

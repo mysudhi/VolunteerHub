@@ -31,6 +31,8 @@ services:
       DB_USER: contributorhub
       NODE_ENV: production
       PORT: "4000"
+      JWT_SECRET: change-this-in-production
+      FRONTEND_URL: http://localhost:3000
     ports:
       - "4000:4000"
     depends_on:

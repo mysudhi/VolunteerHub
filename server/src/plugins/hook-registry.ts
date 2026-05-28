@@ -1,8 +1,8 @@
-export type HookName = "onShiftCreated" | "onVolunteerApplied";
+export type HookName = "onShiftCreated" | "onContributorApplied";
 
 export type HookPayloadMap = {
   onShiftCreated: { shiftId: string; organizationId: string };
-  onVolunteerApplied: { shiftId: string; userId: string; organizationId: string };
+  onContributorApplied: { shiftId: string; userId: string; organizationId: string };
 };
 
 type HookHandler<K extends HookName> = (payload: HookPayloadMap[K]) => Promise<void> | void;
@@ -10,7 +10,7 @@ type HookHandler<K extends HookName> = (payload: HookPayloadMap[K]) => Promise<v
 export class HookRegistry {
   private readonly handlers: { [K in HookName]: HookHandler<K>[] } = {
     onShiftCreated: [],
-    onVolunteerApplied: []
+    onContributorApplied: []
   };
 
   register<K extends HookName>(hookName: K, handler: HookHandler<K>) {
